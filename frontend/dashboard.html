@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Главная</title>
+
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./node_modules/admin-lte/dist/css/adminlte.min.css">
+<!--  <link rel="stylesheet" href="./node_modules/calendar-15/css/rome.css">-->
+
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/sidebars.css">
+  <link rel="stylesheet" href="./src/styles/dashboard.css">
+</head>
+<body>
+
+<main class="d-flex flex-nowrap">
+
+  <aside class="d-flex flex-column flex-shrink-0 pb-3" style="width: 219px; border-right: 1px #D9D9D9 solid;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-decoration-none pt-4 p-3" >
+      <img class=" mx-auto" src="./src/images/logo.svg" alt="" width="98px" height="40px" >
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto pt-5 p-3">
+      <li class="nav-item mb-1">
+        <a href="#" class="d-flex align-content-center gap-2 nav-link active" aria-current="page">
+          <i class="bi bi-house"></i>
+          Главная
+        </a>
+      </li>
+      <li class="nav-item mb-1">
+        <a href="#" class="d-flex align-content-center gap-2 nav-link link-dark">
+          <i class="bi bi-cash-coin"></i>
+          Доходы & Расходы
+        </a>
+      </li>
+      <li class="mb-1">
+        <button class="w-100 d-flex align-content-center justify-content-between btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Категории
+          <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="#052C65"/>
+          </svg>
+
+        </button>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Доходы</a></li>
+            <li><a href="#" class="link-dark rounded">Расходы</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+    <div class="ms-3">
+      <div class="">Баланс: <span class="color-blue">500$</span></div>
+    </div>
+    <hr>
+    <div class="ms-3">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none" >
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>Roman Chernov</strong>
+      </a>
+    </div>
+  </aside>
+
+
+  <div class="dashboard content-wrapper">
+
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+            <h1 class="content-title">Главная</h1>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row" style="margin-bottom: 140px;">
+          <div class="col-md-7">
+            <ul class="nav nav-pills dashboard-tab">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Сегодня</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Неделя</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Месяц</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Год</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Все</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Интервал</a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="col-md-5 d-flex">
+            <form action="#" class="row">
+              <div class="col-md-3 d-flex align-items-center">
+                <div class="form-group d-flex flex-row gap-3">
+                  <label for="input_from">с</label>
+                  <input type="text" class="date-input w-50" id="input_from" placeholder="Дата">
+                </div>
+              </div>
+              <div class="col-md-3 d-flex align-items-center">
+                <div class="form-group d-flex flex-row gap-3">
+                  <label for="input_from">по</label>
+                  <input type="text" class="date-input w-50" id="input_to" placeholder="Дата">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-danger">
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-danger">
+              <div class="card-body">
+                <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script src="./node_modules/calendar-15/js/popper.min.js"></script>-->
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./node_modules/admin-lte/plugins/chart.js/Chart.min.js"></script>
+<script src="./node_modules/admin-lte/dist/js/adminlte.min.js"></script>
+<!--<script src="./node_modules/calendar-15/js/rome.js"></script>-->
+
+<script src="src/scripts/dashboard.js"></script>
+</body>
+</html>

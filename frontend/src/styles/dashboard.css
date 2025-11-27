@@ -1,0 +1,30 @@
+.dashboard{
+
+  .dashboard-tab {
+    gap: 20px;
+
+    .nav-link.active {
+      background-color: #6C757D ;
+      color: white ;
+    }
+    .nav-link:hover {
+      background-color: #6C757D !important;
+      color: white !important;
+    }
+    .nav-link{
+      color: #6C757D ;
+      border: 1px solid #6C757D;
+    }
+  }
+
+  .date-input {
+    border: none;
+    background-color: transparent;
+  }
+
+  .card{
+    background-color: transparent !important ;
+    box-shadow: none;
+  }
+
+}

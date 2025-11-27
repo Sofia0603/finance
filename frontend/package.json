@@ -1,7 +1,12 @@
 {
   "dependencies": {
+    "admin-lte": "^3.2.0",
     "bootstrap": "^5.3.8",
+    "bootstrap-calendar": "^0.2.4",
     "bootstrap-icons": "^1.13.1",
     "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }

@@ -62,8 +62,7 @@
   font-size: 14px;
 }
 
-.link-dark:hover{
+.nav-link:hover{
   background-color: #0d6efd !important;
   color: white !important;
-
 }

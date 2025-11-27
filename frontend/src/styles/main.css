@@ -32,3 +32,12 @@ h1{
 .color-blue{
   color: #0D6EFD;
 }
+
+.content-wrapper{
+  margin-top: 100px;
+  /*margin-left: 60px;*/
+  margin-left: 0 !important;
+}
+.content-title{
+  margin-bottom: 60px !important;
+}
