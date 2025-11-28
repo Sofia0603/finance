@@ -26,8 +26,8 @@ var pieData= {
   ],
   datasets: [
     {
-      data: [700,500,400,600,300,100],
-      backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+      data: [700,500,400,600,300],
+      backgroundColor : ['#f56954', '#FD7E14', '#FFC107', '#20C997', '#0D6EFD'],
     }
   ]
 };
@@ -36,8 +36,7 @@ var pieOptions     = {
   maintainAspectRatio : false,
   responsive : true,
 }
-//Create pie or douhnut chart
-// You can switch between pie and douhnut using the method below.
+
 new Chart(pieChartCanvas, {
   type: 'pie',
   data: pieData,

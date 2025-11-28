@@ -1,7 +1,9 @@
 .dashboard{
 
+
   .dashboard-tab {
     gap: 20px;
+    display: flex;
 
     .nav-link.active {
       background-color: #6C757D ;
@@ -25,6 +27,15 @@
   .card{
     background-color: transparent !important ;
     box-shadow: none;
+    .card-header{
+      background-color: transparent !important ;
+      color: #290661;
+      border-bottom: none;
+      font-weight: 500;
+      font-size: 2rem;
+      padding-bottom: 0;
+      padding-top: 0;
+    }
   }
 
 }

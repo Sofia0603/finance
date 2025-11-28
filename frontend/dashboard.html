@@ -71,9 +71,7 @@
 
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row">
             <h1 class="content-title">Главная</h1>
-        </div>
       </div>
     </section>
 
@@ -81,7 +79,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row" style="margin-bottom: 140px;">
-          <div class="col-md-7">
+          <div class="col-7 mb-2 col-sm-12 col-md-7">
             <ul class="nav nav-pills dashboard-tab">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Сегодня</a>
@@ -104,17 +102,17 @@
 
             </ul>
           </div>
-          <div class="col-md-5 d-flex">
+          <div class="col-5 col-sm-12 col-md-5">
             <form action="#" class="row">
               <div class="col-md-3 d-flex align-items-center">
-                <div class="form-group d-flex flex-row gap-3">
-                  <label for="input_from">с</label>
+                <div class="form-group d-flex flex-row gap-3 mb-0">
+                  <label for="input_from" class="mb-0">с</label>
                   <input type="text" class="date-input w-50" id="input_from" placeholder="Дата">
                 </div>
               </div>
               <div class="col-md-3 d-flex align-items-center">
-                <div class="form-group d-flex flex-row gap-3">
-                  <label for="input_from">по</label>
+                <div class="form-group d-flex flex-row gap-3 mb-0">
+                  <label for="input_from" class="mb-0">по</label>
                   <input type="text" class="date-input w-50" id="input_to" placeholder="Дата">
                 </div>
               </div>
@@ -124,15 +122,21 @@
         <div class="row">
           <div class="col-md-6">
             <div class="card card-danger">
+              <div class="card-header">
+                <div class="text-center">Доходы</div>
+              </div>
               <div class="card-body">
-                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                <canvas id="pieChart" style="min-height: 250px; height: 360px; max-height: 467px; max-width: 100%;"></canvas>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="card card-danger">
+              <div class="card-header">
+                <div class="text-center">Расходы</div>
+              </div>
               <div class="card-body">
-                <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                <canvas id="pieChart2" style="min-height: 250px; height:360px; max-height: 467px; max-width: 100%;"></canvas>
               </div>
             </div>
           </div>
