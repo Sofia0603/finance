@@ -24,11 +24,12 @@
     background-color: transparent;
   }
 
-  .card{
-    background-color: transparent !important ;
+  .card {
+    background-color: transparent !important;
     box-shadow: none;
-    .card-header{
-      background-color: transparent !important ;
+
+    .card-header {
+      background-color: transparent !important;
       color: #290661;
       border-bottom: none;
       font-weight: 500;
@@ -36,6 +37,9 @@
       padding-bottom: 0;
       padding-top: 0;
     }
+  }
+  label{
+    margin-bottom: 0;
   }
 
 }
