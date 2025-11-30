@@ -1,0 +1,14 @@
+
+.income-card{
+  border: 1px solid #CED4DA;
+  border-radius: 12px;
+  max-width: 352px;
+  width: 100%;
+}
+.income-card-title{
+  color: #052C65;
+}
+/*#add-income{*/
+/*  width: 266px;*/
+/*  height: 114px;*/
+/*}*/

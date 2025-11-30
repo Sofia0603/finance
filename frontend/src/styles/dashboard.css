@@ -19,11 +19,6 @@
     }
   }
 
-  .date-input {
-    border: none;
-    background-color: transparent;
-  }
-
   .card {
     background-color: transparent !important;
     box-shadow: none;
@@ -38,6 +33,12 @@
       padding-top: 0;
     }
   }
+
+  .date-input {
+    border: none;
+    background-color: transparent;
+  }
+
   label{
     margin-bottom: 0;
   }

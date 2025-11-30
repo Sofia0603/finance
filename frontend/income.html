@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Главная</title>
+  <title>Доходы</title>
 
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./node_modules/admin-lte/dist/css/adminlte.min.css">
-<!--  <link rel="stylesheet" href="./node_modules/calendar-15/css/rome.css">-->
 
   <link rel="stylesheet" href="./src/styles/main.css">
   <link rel="stylesheet" href="./src/styles/sidebars.css">
-  <link rel="stylesheet" href="./src/styles/dashboard.css">
+  <link rel="stylesheet" href="./src/styles/income.css">
 </head>
 <body>
 
@@ -25,8 +24,8 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto pt-5 p-3">
-      <li class="nav-item mb-1 active">
-        <a href="#" class="d-flex align-content-center gap-2 nav-link " aria-current="page">
+      <li class="nav-item mb-1 ">
+        <a href="dashboard.html" class="d-flex align-content-center gap-2 nav-link" aria-current="page">
           <i class="bi bi-house"></i>
           Главная
         </a>
@@ -37,7 +36,7 @@
           Доходы & Расходы
         </a>
       </li>
-      <li class=" mb-1">
+      <li class="nav-item mb-1 active">
         <button class="button-dropdown w-100 d-flex align-content-center justify-content-between btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
           Категории
           <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +46,7 @@
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="income.html" class="link-dark rounded">Доходы</a></li>
+            <li><a href="#" class="link-dark rounded">Доходы</a></li>
             <li><a href="#" class="link-dark rounded">Расходы</a></li>
           </ul>
         </div>
@@ -67,85 +66,75 @@
   </aside>
 
 
-  <div class="dashboard content-wrapper">
+  <div class="income content-wrapper">
 
     <section class="content-header">
       <div class="container-fluid">
-            <h1 class="content-title">Главная</h1>
+        <h1 class="content-title" id="title">Доходы</h1>
       </div>
     </section>
 
 
     <div class="content">
       <div class="container-fluid">
-        <div class="row" style="margin-bottom: 140px;">
-          <div class="col-7 mb-0 col-sm-12 col-md-7">
-            <ul class="nav nav-pills dashboard-tab">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Сегодня</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Неделя</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Месяц</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Год</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Все</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Интервал</a>
-              </li>
-
-            </ul>
-          </div>
-          <div class="col-5 col-sm-12 col-md-5 d-flex">
-            <form action="#" class="row">
-              <div class="col-md-3 d-flex align-items-center">
-                <div class="form-group d-flex flex-row gap-3 mb-0">
-                  <label for="input_from" class="mb-0">с</label>
-                  <input type="text" class="date-input w-50" id="input_from" placeholder="Дата">
-                </div>
-              </div>
-              <div class="col-md-3 d-flex align-items-center">
-                <div class="form-group d-flex flex-row gap-3 mb-0">
-                  <label for="input_from" class="mb-0">по</label>
-                  <input type="text" class="date-input w-50" id="input_to" placeholder="Дата">
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card card-danger">
-              <div class="card-header">
-                <div class="text-center">Доходы</div>
-              </div>
-              <div class="card-body">
-                <canvas id="pieChart" style="min-height: 250px; height: 360px; max-height: 467px; max-width: 100%;"></canvas>
-              </div>
+        <ul class="list-unstyled d-flex gap-3 flex-wrap ">
+          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
+            <div class="income-card-title fs-4 mb-2">Депозиты</div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary">Редактировать</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card card-danger">
-              <div class="card-header">
-                <div class="text-center">Расходы</div>
-              </div>
-              <div class="card-body">
-                <canvas id="pieChart2" style="min-height: 250px; height:360px; max-height: 467px; max-width: 100%;"></canvas>
-              </div>
+          </li>
+          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
+            <div class="income-card-title fs-4 mb-2">Зарплата</div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary">Редактировать</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
             </div>
-          </div>
+          </li>
+          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
+            <div class="income-card-title fs-4 mb-2">Сбережения</div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary">Редактировать</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
+            </div>
+          </li>
+          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
+            <div class="income-card-title fs-4 mb-2">Инвестиции</div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary">Редактировать</button>
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
+            </div>
+          </li>
 
-        </div>
+          <li class="income-card d-flex justify-content-center flex-column align-content-center" id="add-income">
+            <a href="" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
+              <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
+              </svg>
+            </a>
+          </li>
+
+        </ul>
       </div>
     </div>
 
   </div>
+
+  <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog" aria-labelledby="deleteIncomeModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center font-medium">
+          Вы действительно хотите удалить категорию? Связанные доходы останутся без категории.
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-success" >Да, удалить</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </main>
 
@@ -156,6 +145,5 @@
 <script src="./node_modules/admin-lte/dist/js/adminlte.min.js"></script>
 <!--<script src="./node_modules/calendar-15/js/rome.js"></script>-->
 
-<script src="src/scripts/dashboard.js"></script>
 </body>
 </html>

@@ -27,18 +27,62 @@ h1{
   color: #052C65 !important;
 }
 
+.nav-pills .nav-link{
+  color: black ;
+}
+
 .bg-gray{
   background-color: #D9D9D9;
 }
+
 .color-blue{
   color: #0D6EFD;
 }
 
+.nav-item.active > a{
+  background-color: #0D6EFD;
+  color: #FFF;
+}
+
+.nav-item.active button{
+  background-color: #0D6EFD;
+  color: #FFF;
+}
+.nav-item.active button svg path{
+  fill: white;
+}
+
+.btn:hover svg path{
+  fill: white;
+}
 .content-wrapper{
   margin-top: 100px;
   /*margin-left: 60px;*/
   margin-left: 0 !important;
 }
 .content-title{
-  margin-bottom: 60px !important;
+  margin-bottom: 40px !important;
+}
+.btn-toggle-nav a{
+  margin-left: 0 !important;
+  padding: 8px !important;
+  width: 100% !important;
+  font-size: 14px;
+}
+
+
+.button-dropdown:not(.collapsed) {
+  background-color: #0D6EFD;
+  color: #FFF;
+}
+/*.button-dropdown.active{*/
+/*  background-color: #0D6EFD;*/
+/*  color: #FFF;*/
+/*}*/
+.button-dropdown:not(.collapsed) svg path{
+  fill: white;
+}
+
+.button-dropdown:not(.collapsed) svg{
+  transform: rotate(90deg);
 }
