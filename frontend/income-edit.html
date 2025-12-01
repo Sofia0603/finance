@@ -66,75 +66,33 @@
   </aside>
 
 
-  <div class="income content-wrapper">
+  <div class="income-add content-wrapper">
 
     <section class="content-header">
       <div class="container-fluid">
-        <h1 class="content-title" id="title">Доходы</h1>
+        <h1 class="content-title" id="title">Редактирование категории доходов</h1>
       </div>
     </section>
 
 
     <div class="content">
       <div class="container-fluid">
-        <ul class="list-unstyled d-flex gap-3 flex-wrap ">
-          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="income-card-title fs-4 mb-2">Депозиты</div>
-            <div class="d-flex gap-2">
-              <a href="income-edit.html" class="btn btn-primary">Редактировать</a>
-              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="income-card-title fs-4 mb-2">Зарплата</div>
-            <div class="d-flex gap-2">
-              <a href="income-edit.html" class="btn btn-primary">Редактировать</a>
-              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="income-card-title fs-4 mb-2">Сбережения</div>
-            <div class="d-flex gap-2">
-              <a href="income-edit.html" class="btn btn-primary">Редактировать</a>
-              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="income-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="income-card-title fs-4 mb-2">Инвестиции</div>
-            <div class="d-flex gap-2">
-              <a href="income-edit.html" class="btn btn-primary">Редактировать</a>
-              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
+        <form class="col-12 needs-validation" novalidate>
 
-          <li class="income-card d-flex justify-content-center flex-column align-content-center" id="add-income">
-            <a href="income-add.html" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
-              <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
-              </svg>
-            </a>
-          </li>
+          <input type="text" class="form-control rounded-3 w-75" id="income-name" placeholder="Название..." required="">
+          <div class="invalid-feedback">
+            Введите название
+          </div>
 
-        </ul>
+          <div class="mt-3 d-flex gap-3">
+            <button type="button" class="btn btn-success" id="income-edit">Сохранить</button>
+            <button type="button" class="btn btn-danger" id="income-cancel">Отмена</button>
+          </div>
+        </form>
       </div>
     </div>
 
   </div>
-
-  <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog" aria-labelledby="deleteIncomeModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body text-center font-medium">
-          Вы действительно хотите удалить категорию? Связанные доходы останутся без категории.
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-success" >Да, удалить</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
 </main>
 
