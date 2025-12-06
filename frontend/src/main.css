@@ -1,4 +1,4 @@
-@import "./auth.css";
+@import "styles/auth.css";
 
 
 body {
@@ -20,11 +20,37 @@ main {
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden;
+
 }
 
 h1{
   color: #052C65 !important;
+}
+
+.header{
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 998;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.noscroll {
+  overflow: hidden;
 }
 
 .nav-pills .nav-link{
@@ -38,10 +64,13 @@ h1{
 .color-blue{
   color: #0D6EFD;
 }
+.color-dark-blue{
+  color: #290661;
+}
 
 .nav-item.active > a{
   background-color: #0D6EFD;
-  color: #FFF;
+  color: #FFF !important;
 }
 
 .nav-item.active button{
@@ -55,10 +84,15 @@ h1{
 .btn:hover svg path{
   fill: white;
 }
+
+
 .content-wrapper{
+  width: 100%;
   margin-top: 100px;
   /*margin-left: 60px;*/
   margin-left: 0 !important;
+  height: 100% !important;
+  min-height: unset !important;
 }
 .content-title{
   margin-bottom: 40px !important;
@@ -75,14 +109,35 @@ h1{
   background-color: #0D6EFD;
   color: #FFF;
 }
-/*.button-dropdown.active{*/
-/*  background-color: #0D6EFD;*/
-/*  color: #FFF;*/
-/*}*/
+
 .button-dropdown:not(.collapsed) svg path{
   fill: white;
 }
 
 .button-dropdown:not(.collapsed) svg{
   transform: rotate(90deg);
+}
+
+form{
+  width: 100%!important;
+  max-width: 397px !important;
+}
+
+.common-card{
+  border: 1px solid #CED4DA;
+  border-radius: 12px;
+  max-width: 352px;
+  width: 100%;
+  height: 116px;
+}
+.common-card-title{
+  color: #052C65;
+  font-weight: 500;
+}
+
+
+@media screen and (max-width: 768px){
+  .content-wrapper{
+    margin-top: 40px;
+  }
 }

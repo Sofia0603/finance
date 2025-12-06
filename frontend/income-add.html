@@ -10,15 +10,23 @@
   <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./node_modules/admin-lte/dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="src/main.css">
   <link rel="stylesheet" href="./src/styles/sidebars.css">
   <link rel="stylesheet" href="./src/styles/income.css">
 </head>
 <body>
+<header>
+  <div class="header d-flex justify-content-between align-items-center d-md-none">
+    <img class="ms-3" src="./src/images/logo.svg" alt="" width="98px" height="40px">
 
+    <button id="burger" class="btn btn-primary d-md-none m-2 bg-transparent border-0" type="button">
+      <i class="bi bi-list color-dark-blue"></i>
+    </button>
+  </div>
+</header>
 <main class="d-flex flex-nowrap">
 
-  <aside class="d-flex flex-column flex-shrink-0 pb-3" style="width: 219px; border-right: 1px #D9D9D9 solid;">
+  <aside class="common-sidebar d-flex flex-column flex-shrink-0 pb-3"      >
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-decoration-none pt-4 p-3" >
       <img class=" mx-auto" src="./src/images/logo.svg" alt="" width="98px" height="40px" >
     </a>
@@ -31,7 +39,7 @@
         </a>
       </li>
       <li class="nav-item mb-1">
-        <a href="#" class="d-flex align-content-center gap-2 nav-link link-dark">
+        <a href="common.html" class="d-flex align-content-center gap-2 nav-link link-dark">
           <i class="bi bi-cash-coin"></i>
           Доходы & Расходы
         </a>
@@ -47,7 +55,7 @@
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="income.html" class="link-dark rounded">Доходы</a></li>
-            <li><a href="#" class="link-dark rounded">Расходы</a></li>
+            <li><a href="expenses.html" class="link-dark rounded">Расходы</a></li>
           </ul>
         </div>
       </li>
@@ -60,11 +68,11 @@
     <div class="ms-3">
       <a href="#" class="d-flex align-items-center link-dark text-decoration-none" >
         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Roman Chernov</strong>
+        <strong>Ivan Ivanov</strong>
       </a>
     </div>
   </aside>
-
+  <div id="overlay" class="sidebar-overlay"></div>
 
   <div class="income-add content-wrapper">
 
@@ -79,7 +87,7 @@
       <div class="container-fluid">
           <form class="col-12 needs-validation" novalidate>
 
-            <input type="text" class="form-control rounded-3 w-75" id="income-name" placeholder="Название..." required="">
+            <input type="text" class="form-control rounded-3 " id="income-name" placeholder="Название..." required="">
             <div class="invalid-feedback">
               Введите название
             </div>
@@ -102,6 +110,6 @@
 <script src="./node_modules/admin-lte/plugins/chart.js/Chart.min.js"></script>
 <script src="./node_modules/admin-lte/dist/js/adminlte.min.js"></script>
 <!--<script src="./node_modules/calendar-15/js/rome.js"></script>-->
-
+<script src="src/script.js"></script>
 </body>
 </html>

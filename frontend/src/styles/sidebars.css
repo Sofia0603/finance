@@ -66,3 +66,33 @@
   background-color: #0d6efd !important;
   color: white !important;
 }
+
+.common-sidebar {
+  width: 230px !important;
+  transition: transform 0.3s ease;
+  border-right: 1px #D9D9D9 solid;
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .common-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%); /* спрятан */
+    background: #fff;
+    z-index: 999;
+  }
+
+  .common-sidebar.active {
+    transform: translateX(0%); /* выехать */
+  }
+  .common-sidebar .nav{
+    padding-top: 20px !important;
+  }
+  .btn:hover {
+    background-color: unset !important;
+    color: unset !important;
+  }
+}
