@@ -9,3 +9,12 @@
   border-top-right-radius: 0.375rem !important;
   border-bottom-right-radius: 0.375rem !important;
 }
+.error-form{
+  display: none;
+  margin-bottom: 12px;
+  text-align: center;
+  padding: 8px 11px;
+  font-size: 13px;
+  background-color: #f35353;
+  color: white;
+}

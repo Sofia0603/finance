@@ -1,0 +1,23 @@
+export class FileUtils {
+  static loadPageScript(src){
+    return new Promise((resolve,reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () =>{
+        resolve('script loaded ' + src);
+      }
+      script.onerror = () =>{
+        reject(new Error(`Could not load script: ${src}`));
+      }
+      document.body.appendChild(script);
+    })
+  }
+
+  static loadPageStyles(src, insertBeforeElement){
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = src;
+    document.head.insertBefore(link, insertBeforeElement);
+  }
+}
