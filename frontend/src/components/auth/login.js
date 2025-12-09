@@ -1,9 +1,12 @@
+import {AuthUtils} from "../../utils/auth-utils";
 
 
 export class Login{
 
-  constructor() {
-    console.log('login')
+  constructor(openNewRoute) {
+    this.openNewRoute = openNewRoute;
+
+
     this.formLoginElement = document.getElementById('login-form')
     this.emailElement = document.getElementById('email');
     this.passwordElement = document.getElementById('password')
@@ -52,12 +55,20 @@ export class Login{
       });
 
       const data = await response.json();
+
       console.log(data)
 
       if (data.error || (!data.tokens.accessToken || !data.tokens.refreshToken || !data.user.id || !data.user.name || !data.user.lastName)) {
+        if(data.message === 'Invalid email or password'){
+          this.commonErrorElement.innerText = 'Неверный логин или пароль';
+        }
         this.commonErrorElement.style.display = 'block';
+
         return
       }
+
+      AuthUtils.setAuthInfo(data.tokens.accessToken, data.tokens.refreshToken, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
+
 
     }
   }

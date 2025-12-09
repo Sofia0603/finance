@@ -1,5 +1,6 @@
 import {Login} from "./components/auth/login";
 import {FileUtils} from "./utils/file-utils";
+import {SignUp} from "./components/auth/sign-up";
 
 export class Router{
   constructor(){
@@ -35,12 +36,19 @@ export class Router{
         filePathTemplate:'/templates/pages/auth/login.html',
         useLayout: false,
         load:() =>{
-          document.body.style.height = '100vh';
           new Login(this.openNewRoute.bind(this));
         },
-        unload:() =>{
-          document.body.style.height = 'auto';
+        unload:() =>{},
+      },
+      {
+        route: '/sign-up',
+        title:'Регистрация',
+        filePathTemplate:'/templates/pages/auth/signup.html',
+        useLayout: false,
+        load:() =>{
+          new SignUp(this.openNewRoute.bind(this));
         },
+        unload:() =>{},
       },
 
     ]
