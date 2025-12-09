@@ -1,5 +1,8 @@
-@import "styles/auth.css";
-
+@use 'styles/auth.scss';
+@use 'styles/common.scss';
+@use 'styles/dashboard.scss';
+@use 'styles/income.scss';
+@use 'styles/sidebars.scss';
 
 body {
   min-height: 100vh;
