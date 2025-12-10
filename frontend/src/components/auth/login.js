@@ -43,18 +43,6 @@ export class Login{
 
     if (this.validateForm()) {
 
-      // const response = await fetch('http://localhost:3000/api/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     email: this.emailElement.value,
-      //     password: this.passwordElement.value,
-      //     rememberMe:this.rememberMeElement.checked,
-      //   })
-      // });
-
       const data = await HttpUtils.request('/login', 'POST', false,{
         email: this.emailElement.value,
         password: this.passwordElement.value,

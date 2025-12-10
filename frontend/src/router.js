@@ -1,6 +1,8 @@
 import {Login} from "./components/auth/login";
 import {FileUtils} from "./utils/file-utils";
 import {SignUp} from "./components/auth/sign-up";
+import {Dashboard} from "./components/dashboard/dashboard";
+import {Income} from "./components/income/income";
 
 export class Router{
   constructor(){
@@ -8,28 +10,26 @@ export class Router{
 
 
     this.titleMainElement = document.getElementById('title')
-    this.titlePageElement = document.getElementById('title-page')
+    this.titlePageElement = null;
     this.contentPageElement = document.getElementById('content');
 
     this.routes = [
-      // {
-      //   route: '/',
-      //   title:'Дашборд',
-      //   filePathTemplate:'/templates/pages/dashboard/dashboard.html',
-      //   useLayout:'/templates/layout.html',
-      //   load:() =>{
-      //     new Dashboard(this.openNewRoute.bind(this));
-      //   },
-      //   scripts:[
-      //     'moment.min.js',
-      //     'moment-ru-locale.js',
-      //     'fullcalendar.js',
-      //     'fullcalendar-locale-ru.js'
-      //   ],
-      //   styles: [
-      //     'fullcalendar.css'
-      //   ]
-      // },
+      {
+        route: '/',
+        title:'Дашборд',
+        titlePage: 'Главная',
+        filePathTemplate:'/templates/pages/dashboard/dashboard.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new Dashboard(this.openNewRoute.bind(this));
+        },
+        scripts:[
+          "Chart.min.js",
+          "adminlte.min.js"
+        ],
+        styles: [
+        ]
+      },
       {
         route: '/login',
         title:'Авторизация',
@@ -47,6 +47,17 @@ export class Router{
         useLayout: false,
         load:() =>{
           new SignUp(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+      {
+        route: '/income',
+        title:'Доходы',
+        titlePage: 'Доходы',
+        filePathTemplate:'/templates/pages/income/income.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new Income(this.openNewRoute.bind(this));
         },
         unload:() =>{},
       },
@@ -135,17 +146,23 @@ export class Router{
 
 
       if(newRoute.title){
-        // this.titlePageElement.innerText = newRoute.title;
         this.titleMainElement.innerText = newRoute.title + ' | Finance ';
       }
 
+      if(newRoute.titlePageElement){
+        this.titlePageElement.innerText = newRoute.titlePage;
+      }
+
       if(newRoute.filePathTemplate){
-        document.body.className = '';
         let contentBlock = this.contentPageElement;
         if(newRoute.useLayout){
           this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
           contentBlock = document.getElementById('content-layout')
-          // this.activateMenuItem(newRoute);
+          if(newRoute.titlePage){
+            this.titlePageElement = document.getElementById('title-page')
+            this.titlePageElement.innerText = newRoute.titlePage;
+
+          }
         }
         contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
       }
