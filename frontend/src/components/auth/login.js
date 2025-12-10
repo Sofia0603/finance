@@ -1,4 +1,5 @@
 import {AuthUtils} from "../../utils/auth-utils";
+import {HttpUtils} from "../../utils/http-utils";
 
 
 export class Login{
@@ -42,33 +43,37 @@ export class Login{
 
     if (this.validateForm()) {
 
-      const response = await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: this.emailElement.value,
-          password: this.passwordElement.value,
-          rememberMe:this.rememberMeElement.checked,
-        })
-      });
+      // const response = await fetch('http://localhost:3000/api/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     email: this.emailElement.value,
+      //     password: this.passwordElement.value,
+      //     rememberMe:this.rememberMeElement.checked,
+      //   })
+      // });
 
-      const data = await response.json();
+      const data = await HttpUtils.request('/login', 'POST', false,{
+        email: this.emailElement.value,
+        password: this.passwordElement.value,
+        rememberMe: this.rememberMeElement.checked
+      })
 
       console.log(data)
 
       if (data.error || (!data.tokens.accessToken || !data.tokens.refreshToken || !data.user.id || !data.user.name || !data.user.lastName)) {
-        if(data.message === 'Invalid email or password'){
-          this.commonErrorElement.innerText = 'Неверный логин или пароль';
-        }
+        this.commonErrorElement.innerText = data.message;
         this.commonErrorElement.style.display = 'block';
 
         return
       }
 
+
       AuthUtils.setAuthInfo(data.tokens.accessToken, data.tokens.refreshToken, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
 
+      alert ('Успешно авторизовались ')
 
     }
   }

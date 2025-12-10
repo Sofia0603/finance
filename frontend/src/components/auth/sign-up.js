@@ -1,3 +1,5 @@
+import {HttpUtils} from "../../utils/http-utils";
+
 export class SignUp{
 
   constructor() {
@@ -46,21 +48,14 @@ export class SignUp{
 
     if (this.validateForm()) {
 
-      const response = await fetch('http://localhost:3000/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: this.nameElement.value,
-          lastName: this.lastNameElement.value,
-          email: this.emailElement.value,
-          password: this.passwordElement.value,
-          passwordRepeat: this.passwordRepeatElement.value
-        })
-      });
+      const data = await HttpUtils.request('/signup', 'POST', false,{
+        name: this.nameElement.value,
+        lastName: this.lastNameElement.value,
+        email: this.emailElement.value,
+        password: this.passwordElement.value,
+        passwordRepeat: this.passwordRepeatElement.value
+      })
 
-      const data = await response.json();
       console.log(data)
 
       if (data.error || (!data.user.id || !data.user.email || !data.user.name || !data.user.lastName)) {
@@ -69,6 +64,8 @@ export class SignUp{
 
         return
       }
+
+      alert ('Успешно зарегестрировались')
 
     }
   }

@@ -4,10 +4,7 @@ import {AuthUtils} from "./auth-utils";
 export class HttpUtils {
   static async request(url, method = "GET", useAuth = true, body = null) {
 
-    const result = {
-      error: false,
-      response: null
-    }
+    let result = {}
 
 
     const params = {
@@ -33,7 +30,7 @@ export class HttpUtils {
     let response = null
     try {
       response = await fetch(config.api + url, params);
-      result.response = await response.json()
+      result = await response.json()
     } catch (e) {
       result.error = true;
       return result
