@@ -3,6 +3,15 @@ import {FileUtils} from "./utils/file-utils";
 import {SignUp} from "./components/auth/sign-up";
 import {Dashboard} from "./components/dashboard/dashboard";
 import {Income} from "./components/income/income";
+import {IncomeAdd} from "./components/income/IncomeAdd";
+import {IncomeEdit} from "./components/income/incomeEdit";
+import {Expenses} from "./components/expenses/expenses";
+import {ExpensesAdd} from "./components/expenses/expensesAdd";
+import {ExpensesEdit} from "./components/expenses/expensesEdit";
+import {CommonPage} from "./components/common/common";
+import {CommonAdd} from "./components/common/commonAdd";
+import {CommonEdit} from "./components/common/commonEdit";
+
 
 export class Router{
   constructor(){
@@ -58,6 +67,98 @@ export class Router{
         useLayout:'/templates/layout.html',
         load:() =>{
           new Income(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+      {
+        route: '/income-add',
+        title:'Доходы',
+        titlePage: 'Создание категории доходов',
+        filePathTemplate:'/templates/pages/income/income-add.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new IncomeAdd(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+      {
+        route: '/income-edit',
+        title:'Доходы',
+        titlePage: 'Редактирование категории дохода',
+        filePathTemplate:'/templates/pages/income/income-edit.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new IncomeEdit(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+
+      {
+        route: '/expenses',
+        title:'Расходы',
+        titlePage: 'Расходы',
+        filePathTemplate:'/templates/pages/expenses/expenses.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new Expenses(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+
+      {
+        route: '/expenses-add',
+        title:'Расходы',
+        titlePage: 'Создание категории расходов',
+        filePathTemplate:'/templates/pages/expenses/expenses-add.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new ExpensesAdd(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+
+      {
+        route: '/expenses-edit',
+        title:'Расходы',
+        titlePage: 'Редактирование категории расходов',
+        filePathTemplate:'/templates/pages/expenses/expenses-edit.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new ExpensesEdit(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+
+      {
+        route: '/common',
+        title:'Доходы и расходы',
+        titlePage: 'Доходы и расходы',
+        filePathTemplate:'/templates/pages/common/common.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new CommonPage(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+      {
+        route: '/common-add',
+        title:'Доходы и расходы',
+        titlePage: 'Создать доход или расход',
+        filePathTemplate:'/templates/pages/common/common-add.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new CommonAdd(this.openNewRoute.bind(this));
+        },
+        unload:() =>{},
+      },
+      {
+        route: '/common-edit',
+        title:'Доходы и расходы',
+        titlePage: 'Редактировать доход/расход',
+        filePathTemplate:'/templates/pages/common/common-edit.html',
+        useLayout:'/templates/layout.html',
+        load:() =>{
+          new CommonEdit(this.openNewRoute.bind(this));
         },
         unload:() =>{},
       },
