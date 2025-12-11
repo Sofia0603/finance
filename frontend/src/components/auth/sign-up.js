@@ -1,9 +1,14 @@
 import {HttpUtils} from "../../utils/http-utils";
+import {AuthUtils} from "../../utils/auth-utils";
 
 export class SignUp{
 
-  constructor() {
-    console.log('sign-up')
+  constructor(openNewRoute) {
+    this.openNewRoute = openNewRoute
+
+    if(AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) {
+      return this.openNewRoute('/')
+    }
 
     this.formLoginElement = document.getElementById('signup-form')
     this.nameElement = document.getElementById('name');
@@ -65,7 +70,10 @@ export class SignUp{
         return
       }
 
-      alert ('Успешно зарегестрировались')
+      AuthUtils.setAuthInfo( null, null, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
+
+
+      this.openNewRoute('/')
 
     }
   }

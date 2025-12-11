@@ -11,16 +11,18 @@ import {ExpensesEdit} from "./components/expenses/expensesEdit";
 import {CommonPage} from "./components/common/common";
 import {CommonAdd} from "./components/common/commonAdd";
 import {CommonEdit} from "./components/common/commonEdit";
+import {AuthUtils} from "./utils/auth-utils";
 
 
 export class Router{
   constructor(){
     this.initEvents();
 
-
     this.titleMainElement = document.getElementById('title')
     this.titlePageElement = null;
     this.contentPageElement = document.getElementById('content');
+
+    this.userData = AuthUtils.getAuthInfo()
 
     this.routes = [
       {
@@ -256,13 +258,18 @@ export class Router{
 
       if(newRoute.filePathTemplate){
         let contentBlock = this.contentPageElement;
-        if(newRoute.useLayout){
+        if(newRoute.useLayout) {
           this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
           contentBlock = document.getElementById('content-layout')
-          if(newRoute.titlePage){
-            this.titlePageElement = document.getElementById('title-page')
-            this.titlePageElement.innerText = newRoute.titlePage;
 
+          this.titlePageElement = document.getElementById('title-page')
+          this.titlePageElement.innerText = newRoute.titlePage;
+
+          if(this.userData.length === 0){
+              let userInfo = JSON.parse(this.userData.userInfo)
+            if(userInfo){
+              document.getElementById('full-name').innerText = userInfo.name + ' ' + userInfo.lastName;
+            }
           }
         }
         contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());

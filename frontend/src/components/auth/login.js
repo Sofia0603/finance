@@ -7,6 +7,9 @@ export class Login{
   constructor(openNewRoute) {
     this.openNewRoute = openNewRoute;
 
+    if(AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) {
+      return this.openNewRoute('/')
+    }
 
     this.formLoginElement = document.getElementById('login-form')
     this.emailElement = document.getElementById('email');
@@ -42,7 +45,6 @@ export class Login{
   async login() {
 
     if (this.validateForm()) {
-
       const data = await HttpUtils.request('/login', 'POST', false,{
         email: this.emailElement.value,
         password: this.passwordElement.value,
@@ -52,8 +54,18 @@ export class Login{
       console.log(data)
 
       if (data.error || (!data.tokens.accessToken || !data.tokens.refreshToken || !data.user.id || !data.user.name || !data.user.lastName)) {
-        this.commonErrorElement.innerText = data.message;
-        this.commonErrorElement.style.display = 'block';
+        if(data.message ) {
+
+          if(data.message === "Invalid email or password"){
+            this.commonErrorElement.innerText = "Неверный логин или пароль";
+            this.commonErrorElement.style.display = 'block';
+          } else {
+            this.commonErrorElement.innerText = data.message;
+            this.commonErrorElement.style.display = 'block';
+          }
+
+        }
+
 
         return
       }
@@ -61,8 +73,7 @@ export class Login{
 
       AuthUtils.setAuthInfo(data.tokens.accessToken, data.tokens.refreshToken, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
 
-      alert ('Успешно авторизовались ')
-
+      this.openNewRoute('/')
     }
   }
 
