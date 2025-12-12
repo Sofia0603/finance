@@ -7,10 +7,6 @@ export class Login{
   constructor(openNewRoute) {
     this.openNewRoute = openNewRoute;
 
-    if(AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) {
-      return this.openNewRoute('/')
-    }
-
     this.formLoginElement = document.getElementById('login-form')
     this.emailElement = document.getElementById('email');
     this.passwordElement = document.getElementById('password')
@@ -69,7 +65,6 @@ export class Login{
 
         return
       }
-
 
       AuthUtils.setAuthInfo(data.tokens.accessToken, data.tokens.refreshToken, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
 

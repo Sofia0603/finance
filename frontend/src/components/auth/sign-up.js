@@ -6,10 +6,6 @@ export class SignUp{
   constructor(openNewRoute) {
     this.openNewRoute = openNewRoute
 
-    if(AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) {
-      return this.openNewRoute('/')
-    }
-
     this.formLoginElement = document.getElementById('signup-form')
     this.nameElement = document.getElementById('name');
     this.lastNameElement = document.getElementById('last-name');
@@ -73,7 +69,7 @@ export class SignUp{
       AuthUtils.setAuthInfo( null, null, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
 
 
-      this.openNewRoute('/')
+      this.openNewRoute('/login')
 
     }
   }

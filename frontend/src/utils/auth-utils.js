@@ -16,6 +16,8 @@ export class AuthUtils {
     localStorage.removeItem(this.accessTokenKey)
     localStorage.removeItem(this.refreshTokenKey)
     localStorage.removeItem(this.userInfoTokenKey)
+
+    window.location.reload()
   }
 
   static getAuthInfo(key = null) {

@@ -123,16 +123,18 @@ h1{
 
 
 .button-dropdown:not(.collapsed) {
-  background-color: #0D6EFD;
-  color: #FFF;
+  background-color: rgb(108, 117, 125);
+  color: #FFF !important;
 }
 
 .button-dropdown:not(.collapsed) svg path{
   fill: white;
+
 }
 
 .button-dropdown:not(.collapsed) svg{
   transform: rotate(90deg);
+  margin-right: 4px;
 }
 
 form{

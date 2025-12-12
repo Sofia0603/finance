@@ -12,6 +12,7 @@ import {CommonPage} from "./components/common/common";
 import {CommonAdd} from "./components/common/commonAdd";
 import {CommonEdit} from "./components/common/commonEdit";
 import {AuthUtils} from "./utils/auth-utils";
+import {CheckAccessUtils} from "./utils/check-access-utils";
 
 
 export class Router{
@@ -22,7 +23,7 @@ export class Router{
     this.titlePageElement = null;
     this.contentPageElement = document.getElementById('content');
 
-    this.userData = AuthUtils.getAuthInfo()
+    this.logoutButton = null;
 
     this.routes = [
       {
@@ -32,6 +33,7 @@ export class Router{
         filePathTemplate:'/templates/pages/dashboard/dashboard.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new Dashboard(this.openNewRoute.bind(this));
         },
         scripts:[
@@ -39,6 +41,7 @@ export class Router{
           "adminlte.min.js"
         ],
         styles: [
+
         ]
       },
       {
@@ -68,6 +71,7 @@ export class Router{
         filePathTemplate:'/templates/pages/income/income.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new Income(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -79,6 +83,7 @@ export class Router{
         filePathTemplate:'/templates/pages/income/income-add.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new IncomeAdd(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -90,6 +95,7 @@ export class Router{
         filePathTemplate:'/templates/pages/income/income-edit.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new IncomeEdit(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -102,6 +108,7 @@ export class Router{
         filePathTemplate:'/templates/pages/expenses/expenses.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new Expenses(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -114,6 +121,7 @@ export class Router{
         filePathTemplate:'/templates/pages/expenses/expenses-add.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new ExpensesAdd(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -126,6 +134,7 @@ export class Router{
         filePathTemplate:'/templates/pages/expenses/expenses-edit.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new ExpensesEdit(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -138,6 +147,7 @@ export class Router{
         filePathTemplate:'/templates/pages/common/common.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new CommonPage(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -149,6 +159,7 @@ export class Router{
         filePathTemplate:'/templates/pages/common/common-add.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new CommonAdd(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -160,6 +171,7 @@ export class Router{
         filePathTemplate:'/templates/pages/common/common-edit.html',
         useLayout:'/templates/layout.html',
         load:() =>{
+          new CheckAccessUtils(this.openNewRoute.bind(this))
           new CommonEdit(this.openNewRoute.bind(this));
         },
         unload:() =>{},
@@ -207,6 +219,8 @@ export class Router{
   }
 
   async activateRoute(e, oldRoute = null){
+
+
 
     if(oldRoute){
       const currentRoute = this.routes.find(item => item.route === oldRoute);
@@ -259,18 +273,32 @@ export class Router{
       if(newRoute.filePathTemplate){
         let contentBlock = this.contentPageElement;
         if(newRoute.useLayout) {
+          console.log('layout')
           this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+          this.logoutButton = document.getElementById('logout-btn');
           contentBlock = document.getElementById('content-layout')
 
           this.titlePageElement = document.getElementById('title-page')
           this.titlePageElement.innerText = newRoute.titlePage;
 
-          if(this.userData.length === 0){
-              let userInfo = JSON.parse(this.userData.userInfo)
+          this.activateMenuItem(newRoute);
+          this.userData = AuthUtils.getAuthInfo()
+
+          if(this.userData.length !== 0){
+            let userInfo = JSON.parse(this.userData.userInfo)
+
             if(userInfo){
-              document.getElementById('full-name').innerText = userInfo.name + ' ' + userInfo.lastName;
-            }
+                document.getElementById('full-name').innerText = userInfo.name + ' ' + userInfo.lastName;
+              }
           }
+
+          if(this.logoutButton){
+            this.logoutButton.addEventListener('click', (e) => {
+              AuthUtils.removeAuthInfo()
+            })
+          }
+
+
         }
         contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
       }
@@ -289,8 +317,23 @@ export class Router{
 
 
   activateMenuItem(route){
-    document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+
+    document.querySelectorAll('.common-sidebar .nav-link').forEach(item => {
       const href = item.getAttribute('href');
+
+      const toggleItem = document.getElementById('toggle-btn')
+      const dropdown = document.getElementById('dashboard-collapse')
+
+      if(((route.route.includes('income') ) || (route.route.includes('expenses'))) && toggleItem ){
+        toggleItem.setAttribute('aria-expanded', 'true');
+        toggleItem.classList.remove('collapsed');
+        dropdown.classList.add('show');
+      } else {
+        toggleItem.setAttribute('aria-expanded', "false");
+        toggleItem.classList.add('collapsed');
+        dropdown.classList.remove('show');
+      }
+
       if((route.route.includes(href) && href !== '/') || (route.route === '/' && href === '/') ){
         item.classList.add('active');
       } else {
