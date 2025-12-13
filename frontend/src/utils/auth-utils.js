@@ -6,7 +6,7 @@ export class AuthUtils {
   static refreshTokenKey = 'refreshToken';
   static userInfoTokenKey = 'userInfo';
 
-  static setAuthInfo(accessToken = null,refreshToken = null, userInfo = null) {
+  static setAuthInfo(accessToken,refreshToken, userInfo = null ) {
     localStorage.setItem(this.accessTokenKey, accessToken)
     localStorage.setItem(this.refreshTokenKey,refreshToken)
     localStorage.setItem(this.userInfoTokenKey, JSON.stringify(userInfo))
@@ -21,7 +21,6 @@ export class AuthUtils {
   }
 
   static getAuthInfo(key = null) {
-    console.log('key из auth getAuthInfo ' + key)
     if(key && [this.accessTokenKey, this.refreshTokenKey, this.userInfoTokenKey].includes(key)) {
       return localStorage.getItem(key)
     } else {
@@ -50,6 +49,7 @@ export class AuthUtils {
 
       if(response && response.status === 200){
         const tokens = await response.json();
+        console.log(tokens);
         if(tokens && !tokens.error){
           this.setAuthInfo(tokens.accessToken, tokens.refreshToken);
           result = true;

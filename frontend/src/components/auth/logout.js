@@ -6,7 +6,7 @@ export class Logout {
   constructor(openNewRoute) {
     this.openNewRoute = openNewRoute;
 
-    // this.logout().then();
+    this.logout().then();
   }
 
 

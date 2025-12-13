@@ -40,7 +40,7 @@ export class HttpUtils {
 
 
     if (response.status < 200 || response.status >= 300) {
-    debugger
+      debugger
       result.error = true;
       if(useAuth && response.status === 401) {
         console.log(response)

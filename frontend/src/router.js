@@ -282,22 +282,25 @@ export class Router{
         if(newRoute.useLayout) {
           console.log('layout')
           this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+
+
+          this.activateMenuItem(newRoute);
+          this.userData = AuthUtils.getAuthInfo()
+
+          if(this.userData.length !== 0 && this.userData.useInfo !== undefined){
+            let userInfo = JSON.parse(this.userData.userInfo)
+
+            if(userInfo){
+              document.getElementById('full-name').innerText = userInfo.name + ' ' + userInfo.lastName;
+            }
+          }
+
           this.logoutButton = document.getElementById('logout-btn');
           contentBlock = document.getElementById('content-layout')
 
           this.titlePageElement = document.getElementById('title-page')
           this.titlePageElement.innerText = newRoute.titlePage;
 
-          this.activateMenuItem(newRoute);
-          this.userData = AuthUtils.getAuthInfo()
-
-          if(this.userData.length !== 0){
-            let userInfo = JSON.parse(this.userData.userInfo)
-
-            if(userInfo){
-                document.getElementById('full-name').innerText = userInfo.name + ' ' + userInfo.lastName;
-              }
-          }
 
           if(this.logoutButton){
             this.logoutButton.addEventListener('click', (e) => {

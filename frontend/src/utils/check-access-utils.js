@@ -8,11 +8,13 @@ export class CheckAccessUtils {
   }
 
   init() {
+
    const accessData = AuthUtils.getAuthInfo()
 
-    if(accessData.accessToken === null && accessData.refreshToken === null) {
+    if(accessData.accessToken !== undefined && accessData.refreshToken !== undefined ) {
       this.openNewRoute('/login')
       alert('не найдены токены')
     }
   }
+
 }

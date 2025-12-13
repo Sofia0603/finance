@@ -66,9 +66,6 @@ export class SignUp{
         return
       }
 
-      AuthUtils.setAuthInfo( null, null, {id: data.user.id, name: data.user.name, lastName: data.user.lastName})
-
-
       this.openNewRoute('/login')
 
     }
