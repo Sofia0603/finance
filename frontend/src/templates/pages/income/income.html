@@ -1,150 +1,62 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<div class="income">
+  <div class="content">
+    <div class="container-fluid">
+      <ul class="list-unstyled d-flex gap-3 flex-wrap" id="income-list">
 
-<!--  <title>Доходы</title>-->
+<!--        <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">-->
+<!--          <div class="common-card-title fs-4 mb-2">Депозиты</div>-->
+<!--          <div class="d-flex gap-2">-->
+<!--            <a href="/income-edit" class="btn btn-success">Редактировать</a>-->
+<!--            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">-->
+<!--          <div class="common-card-title fs-4 mb-2">Зарплата</div>-->
+<!--          <div class="d-flex gap-2">-->
+<!--            <a href="/income-edit" class="btn btn-success">Редактировать</a>-->
+<!--            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">-->
+<!--          <div class="common-card-title fs-4 mb-2">Сбережения</div>-->
+<!--          <div class="d-flex gap-2">-->
+<!--            <a href="/income-edit" class="btn btn-success">Редактировать</a>-->
+<!--            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">-->
+<!--          <div class="common-card-title fs-4 mb-2">Инвестиции</div>-->
+<!--          <div class="d-flex gap-2">-->
+<!--            <a href="/income-edit" class="btn btn-success">Редактировать</a>-->
+<!--            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>-->
+<!--          </div>-->
+<!--        </li>-->
 
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/admin-lte/dist/css/adminlte.min.css">-->
+        <li class="common-card d-flex justify-content-center flex-column align-content-center" id="add-income">
+          <a href="/income-add" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
+            <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
+            </svg>
+          </a>
+        </li>
 
-<!--  <link rel="stylesheet" href="../../../main.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/sidebars.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/income.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--  <div class="header d-flex justify-content-between align-items-center d-md-none">-->
-<!--    <img class="ms-3" src="../../../images/logo.svg" alt="" width="98px" height="40px">-->
-
-<!--    <button id="burger" class="btn btn-primary d-md-none m-2 bg-transparent border-0" type="button">-->
-<!--      <i class="bi bi-list color-dark-blue"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--  </header>-->
-<!--  <main class="d-flex flex-nowrap">-->
-
-<!--  <aside class="common-sidebar d-flex flex-column flex-shrink-0 pb-3"      >-->
-<!--    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-decoration-none pt-4 p-3" >-->
-<!--      <img class=" mx-auto" src="../../../images/logo.svg" alt="" width="98px" height="40px" >-->
-<!--    </a>-->
-<!--    <hr>-->
-<!--    <ul class="nav nav-pills flex-column mb-auto pt-5 p-3">-->
-<!--      <li class="nav-item mb-1 ">-->
-<!--        <a href="../dashboard/dashboard.html" class="d-flex align-content-center gap-2 nav-link" aria-current="page">-->
-<!--          <i class="bi bi-house"></i>-->
-<!--          Главная-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="nav-item mb-1">-->
-<!--        <a href="../common/common.html" class="d-flex align-content-center gap-2 nav-link link-dark">-->
-<!--          <i class="bi bi-cash-coin"></i>-->
-<!--          Доходы & Расходы-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="nav-item mb-1 active">-->
-<!--        <button class="button-dropdown w-100 d-flex align-content-center justify-content-between btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">-->
-<!--          Категории-->
-<!--          <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="#052C65"/>-->
-<!--          </svg>-->
-
-<!--        </button>-->
-<!--        <div class="collapse" id="dashboard-collapse">-->
-<!--          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">-->
-<!--            <li><a href="income.html" class="link-dark rounded">Доходы</a></li>-->
-<!--            <li><a href="../expenses/expenses.html" class="link-dark rounded">Расходы</a></li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--    </ul>-->
-
-<!--    <div class="ms-3">-->
-<!--      <div class="">Баланс: <span class="color-blue">500$</span></div>-->
-<!--    </div>-->
-<!--    <hr>-->
-<!--    <div class="ms-3">-->
-<!--      <a href="#" class="d-flex align-items-center link-dark text-decoration-none" >-->
-<!--        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">-->
-<!--        <strong>Ivan Ivanov</strong>-->
-<!--      </a>-->
-<!--    </div>-->
-<!--  </aside>-->
-<!--  <div id="overlay" class="sidebar-overlay"></div>-->
-
-  <div class="income">
-
-    <div class="content">
-      <div class="container-fluid">
-        <ul class="list-unstyled d-flex gap-3 flex-wrap ">
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Депозиты</div>
-            <div class="d-flex gap-2">
-              <a href="/income-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Зарплата</div>
-            <div class="d-flex gap-2">
-              <a href="/income-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Сбережения</div>
-            <div class="d-flex gap-2">
-              <a href="/income-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Инвестиции</div>
-            <div class="d-flex gap-2">
-              <a href="/income-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteIncomeModal">Удалить</button>
-            </div>
-          </li>
-
-          <li class="common-card d-flex justify-content-center flex-column align-content-center" id="add-income">
-            <a href="/income-add" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
-              <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
-              </svg>
-            </a>
-          </li>
-
-        </ul>
-      </div>
+      </ul>
     </div>
+  </div>
 
-    <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog" aria-labelledby="deleteIncomeModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-body text-center font-medium color-dark-blue fs-5">
-            Вы действительно хотите удалить категорию? Связанные доходы останутся без категории.
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-success" >Да, удалить</button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
-          </div>
+  <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog" aria-labelledby="deleteIncomeModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center font-medium color-dark-blue fs-5">
+          Вы действительно хотите удалить категорию? Связанные доходы останутся без категории.
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-success" id="income-delete" >Да, удалить</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
         </div>
       </div>
     </div>
-
   </div>
 
+</div>
 
-<!--</main>-->
-
-<!--<script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>-->
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/popper.min.js"></script>&ndash;&gt;-->
-<!--<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
-<!--<script src="../../../../node_modules/admin-lte/plugins/chart.js/Chart.min.js"></script>-->
-<!--<script src="../../../../node_modules/admin-lte/dist/js/adminlte.min.js"></script>-->
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/rome.js"></script>&ndash;&gt;-->
-<!--<script src="../../../script.js"></script>-->
-<!--</body>-->
-<!--</html>-->

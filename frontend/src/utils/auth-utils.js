@@ -21,6 +21,7 @@ export class AuthUtils {
   }
 
   static getAuthInfo(key = null) {
+    console.log('key из auth getAuthInfo ' + key)
     if(key && [this.accessTokenKey, this.refreshTokenKey, this.userInfoTokenKey].includes(key)) {
       return localStorage.getItem(key)
     } else {
@@ -33,6 +34,7 @@ export class AuthUtils {
   }
 
   static async updateRefreshToken() {
+
     let result = false;
 
     const refreshToken = this.getAuthInfo(this.refreshTokenKey);
@@ -53,11 +55,12 @@ export class AuthUtils {
           result = true;
         }
       }
-    }
 
-    if(!result){
-      this.removeAuthInfo()
+
     }
+    // if(!result){
+    //   this.removeAuthInfo()
+    // }
 
     return result;
   }

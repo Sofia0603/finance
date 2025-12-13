@@ -13,6 +13,7 @@ import {CommonAdd} from "./components/common/commonAdd";
 import {CommonEdit} from "./components/common/commonEdit";
 import {AuthUtils} from "./utils/auth-utils";
 import {CheckAccessUtils} from "./utils/check-access-utils";
+import {Logout} from "./components/auth/logout";
 
 
 export class Router{
@@ -176,6 +177,12 @@ export class Router{
         },
         unload:() =>{},
       },
+      {
+        route: '/logout',
+        load:() => {
+          new Logout(this.openNewRoute.bind(this));
+        }
+      },
 
     ]
   }
@@ -294,7 +301,7 @@ export class Router{
 
           if(this.logoutButton){
             this.logoutButton.addEventListener('click', (e) => {
-              AuthUtils.removeAuthInfo()
+             this.openNewRoute('/logout');
             })
           }
 

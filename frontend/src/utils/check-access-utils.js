@@ -12,6 +12,7 @@ export class CheckAccessUtils {
 
     if(accessData.accessToken === null && accessData.refreshToken === null) {
       this.openNewRoute('/login')
+      alert('не найдены токены')
     }
   }
 }
