@@ -11,7 +11,7 @@ export class CheckAccessUtils {
 
    const accessData = AuthUtils.getAuthInfo()
 
-    if(accessData.accessToken !== undefined && accessData.refreshToken !== undefined ) {
+    if(!accessData.accessToken && !accessData.refreshToken || (accessData.accessToken === 'undefined' && accessData.refreshToken === 'undefined') ) {
       this.openNewRoute('/login')
       alert('не найдены токены')
     }

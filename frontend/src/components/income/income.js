@@ -19,10 +19,6 @@ export class Income {
       return this.openNewRoute(result.redirect);
     }
 
-    // if (result.error || !result.response || (result.response && ( result.response.error))) {
-    //   return alert ('Возникла ошибка при запросе категорий. Обратитесь в поддержку')
-    // }
-
     this.showIncome(result);
   }
 
@@ -78,15 +74,9 @@ export class Income {
   }
 
    async incomeDelete(incomeId){
-    debugger
     const result = await httpUtils.request(`/categories/income/${incomeId}`, 'DELETE', )
-    const modal = document.querySelector('.modal')
-    const body = document.querySelector('body')
     if(!result.error){
-      modal.classList.remove('show')
-      modal.style.display = 'none'
-      modal.setAttribute('aria-hidden', 'true')
-      body.classList.remove('modal-open')
+      window.location.reload()
 
     }
 

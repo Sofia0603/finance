@@ -287,7 +287,7 @@ export class Router{
           this.activateMenuItem(newRoute);
           this.userData = AuthUtils.getAuthInfo()
 
-          if(this.userData.length !== 0 && this.userData.useInfo !== undefined){
+          if(this.userData.length !== 0 && this.userData.useInfo !== 'undefined'){
             let userInfo = JSON.parse(this.userData.userInfo)
 
             if(userInfo){

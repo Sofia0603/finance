@@ -2,7 +2,6 @@ import config from "../config/config";
 import {AuthUtils} from "./auth-utils";
 
 export class HttpUtils {
-
   static async request(url, method = "GET", useAuth = true, body = null) {
 
     let result = {}
@@ -61,8 +60,9 @@ export class HttpUtils {
           }
         }
       }
+      return result;
+
     }
-    result = await response.json()
-    return result;
+    return await response.json();
   }
 }

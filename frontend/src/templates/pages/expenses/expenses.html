@@ -1,136 +1,32 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--  <title>Расходы</title>-->
-
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/admin-lte/dist/css/adminlte.min.css">-->
-
-<!--  <link rel="stylesheet" href="../../../main.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/sidebars.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/income.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--  <div class="header d-flex justify-content-between align-items-center d-md-none">-->
-<!--    <img class="ms-3" src="../../../images/logo.svg" alt="" width="98px" height="40px">-->
-
-<!--    <button id="burger" class="btn btn-primary d-md-none m-2 bg-transparent border-0" type="button">-->
-<!--      <i class="bi bi-list color-dark-blue"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</header>-->
-<!--<main class="d-flex flex-nowrap">-->
+<div class="expenses">
+  <div class="container-fluid">
+    <ul class="list-unstyled d-flex gap-3 flex-wrap " id="expenses-list">
 
 
+      <li class="common-card d-flex justify-content-center flex-column align-content-center]" style="height: 116px;" id="expenses-create">
+        <a href="/expenses-add" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
+          <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
+          </svg>
+        </a>
+      </li>
 
-    <div class="expenses">
-      <div class="container-fluid">
-        <ul class="list-unstyled d-flex gap-3 flex-wrap ">
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Еда</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Жильё</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Здоровье</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Кафе</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Авто</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Одежда</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Развлечения</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Счета</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
-          <li class="common-card d-flex justify-content-center flex-column align-content-center p-3">
-            <div class="common-card-title fs-4 mb-2">Спорт</div>
-            <div class="d-flex gap-2">
-              <a href="/expenses-edit" class="btn btn-success">Редактировать</a>
-              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteExpensesModal">Удалить</button>
-            </div>
-          </li>
+    </ul>
+  </div>
+</div>
 
-          <li class="common-card d-flex justify-content-center flex-column align-content-center]" style="height: 116px;" id="add-income">
-            <a href="/expenses-add" class="btn w-100 h-100 rounded-3 d-flex justify-content-center">
-              <svg class="align-self-center" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6445 5.57812V8.54492H0V5.57812H13.6445ZM8.42188 0V14.4922H5.23633V0H8.42188Z" fill="#CED4DA"/>
-              </svg>
-            </a>
-          </li>
 
-        </ul>
-      </div>
+<div class="modal fade" id="deleteExpensesModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpensesModalTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-body text-center font-medium fw-bold color-dark-blue fs-5">
+      Вы действительно хотите удалить категорию?
     </div>
-
-
-  <div class="modal fade" id="deleteExpensesModal" tabindex="-1" role="dialog" aria-labelledby="deleteExpensesModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body text-center font-medium fw-bold color-dark-blue fs-5">
-          Вы действительно хотите удалить категорию?
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-success" >Да, удалить</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
-        </div>
-      </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-success" id="expense-delete">Да, удалить</button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
     </div>
   </div>
+</div>
+</div>
 
-
-<!--</main>-->
-
-<!--<script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>-->
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/popper.min.js"></script>&ndash;&gt;-->
-<!--<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
-<!--<script src="../../../../node_modules/admin-lte/plugins/chart.js/Chart.min.js"></script>-->
-<!--<script src="../../../../node_modules/admin-lte/dist/js/adminlte.min.js"></script>-->
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/rome.js"></script>&ndash;&gt;-->
-<!--<script src="../../../script.js"></script>-->
-<!--</body>-->
-<!--</html>-->
