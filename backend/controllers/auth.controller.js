@@ -23,7 +23,7 @@ class AuthController {
             let user = UserModel.findOne({email: req.body.email});
             if (user) {
                 return res.status(400)
-                    .json({error: true, message: "User with given email already exist"});
+                    .json({error: true, message: "Пользователь с указанным адресом электронной почты уже существует"});
             }
 
             const salt = await bcrypt.genSalt(Number('example'));
@@ -49,7 +49,7 @@ class AuthController {
             });
         } catch (err) {
             console.log(err);
-            res.status(500).json({error: true, message: "Internal Server Error"});
+            res.status(500).json({error: true, message: "Ошибка сервера"});
         }
     }
 
@@ -60,7 +60,7 @@ class AuthController {
             if (errorDetails && errorDetails.error) {
                 return res.status(400).json({
                     error: true,
-                    message: "Validation error",
+                    message: "Ошибка валидации",
                     validation: errorDetails.error.details.map(item => ({
                             key: item.context.key,
                             message: item.message,
@@ -71,7 +71,7 @@ class AuthController {
 
             const user = UserModel.findOne({email: req.body.email});
             if (!user) {
-                return res.status(401).json({error: true, message: "Invalid email or password"});
+                return res.status(401).json({error: true, message: "Неверный email или пароль"});
             }
 
             const verifiedPassword = await bcrypt.compare(
@@ -79,7 +79,7 @@ class AuthController {
                 user.password
             );
             if (!verifiedPassword) {
-                return res.status(401).json({error: true, message: "Invalid email or password"});
+                return res.status(401).json({error: true, message: "Неверный email или пароль"});
             }
 
             const {accessToken, refreshToken} = await TokenUtils.generateTokens(user, req.body.rememberMe);
@@ -97,7 +97,7 @@ class AuthController {
             });
         } catch (err) {
             console.log(err);
-            res.status(500).json({error: true, message: "Internal Server Error"});
+            res.status(500).json({error: true, message: "Ошибка сервера"});
         }
     }
 
@@ -107,7 +107,7 @@ class AuthController {
         if (errorDetails && errorDetails.error) {
             return res.status(400).json({
                 error: true,
-                message: "Validation error",
+                message: "Ошибка валидации",
                 validation: errorDetails.error.details.map(item => ({
                         key: item.context.key,
                         message: item.message,
