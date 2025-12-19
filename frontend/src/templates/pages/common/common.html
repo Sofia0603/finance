@@ -10,13 +10,35 @@
         <div class="col-12 col-md-auto">
           <ul class="nav nav-pills dashboard-tab">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Сегодня</a>
+              <button type="button" class="nav-link" data-period="today">
+                Сегодня
+              </button>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#">Неделя</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Месяц</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Год</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Все</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Интервал</a></li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" data-period="week">
+                Неделя
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" data-period="month">
+                Месяц
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" data-period="year">
+                Год
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" data-period="all">
+                Все
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="nav-link" data-period="interval">
+                Интервал
+              </button>
+            </li>
           </ul>
         </div>
         <div class="col-12 col-md d-flex">
@@ -50,44 +72,11 @@
           <th scope="col"></th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td style="color: green">доход</td>
-          <td>зарплата</td>
-          <td>500$</td>
-          <td>11.09.2022</td>
-          <td></td>
-          <td>
-            <div class="common-action d-flex align-items-center gap-2 justify-content-end">
-              <button type="button" id="" class="btn" data-bs-toggle="modal" data-bs-target="#common-delete">
-                <i class="bi bi-trash" style="color: #000;"></i>
-              </button>
-              <a class="btn" href="/common-edit">
-                <i class="bi bi-pencil" style="color: #000;"></i>
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td style="color: red">расход</td>
-          <td>жильё</td>
-          <td>2 500$</td>
-          <td>12.09.2022</td>
-          <td></td>
-          <td>
-            <div class="common-action d-flex align-items-center gap-2 justify-content-end">
-              <button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#common-delete">
-                <i class="bi bi-trash" style="color: #000;"></i>
-              </button>
-              <a class="btn" href="/common-edit">
-                <i class="bi bi-pencil" style="color: #000;"></i>
-              </a>
-            </div>
-          </td>
-        </tr>
+
+        <tbody id="table-body">
+
         </tbody>
+
       </table>
       </div>
 
@@ -95,3 +84,18 @@
 
     </div>
   </div>
+
+
+<div class="modal fade" id="common-delete-modal" tabindex="-1" role="dialog" aria-labelledby="common-delete" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center font-medium fw-bold color-dark-blue fs-5">
+        Вы действительно хотите удалить категорию?
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-success" id="common-delete">Да, удалить</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+      </div>
+    </div>
+  </div>
+</div>
