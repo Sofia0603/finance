@@ -5,7 +5,8 @@ export class CommonPage{
   constructor() {
 
     this.changedPeriod()
-
+    this.deleteBtnElemets = null;
+    this.getCommon().then()
   }
 
 
@@ -27,11 +28,27 @@ export class CommonPage{
   }
 
 
-  async getCommon(period){
+  async getCommon(period = 'all'){
 
     const result = await HttpUtils.request('/operations?period=' + period )
-    console.log(result)
+
+    if(result.error){
+      return
+    }
+
     this.showTable(result)
+
+    this.deleteBtnElemets = document.querySelectorAll('.delete-btn')
+    console.log(this.deleteBtnElemets)
+    this.deleteBtnElemets.forEach(item => {
+      item.addEventListener("click", (event)=>{
+        let btn = event.target;
+        let id = btn.getAttribute("data-item-id")
+
+        this.openCommonModal(id)
+      })
+
+    });
 
   }
 
@@ -52,7 +69,7 @@ export class CommonPage{
   '       <button type="button"  data-item-id="'+ result[i].id + '" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#common-delete-modal">\n' +
   '           <i class="bi bi-trash" style="color: #000;"></i>\n' +
   '        </button>\n' +
-  '        <a class="btn" href="/common-edit">\n' +
+  '        <a class="btn" href="/common-edit?id=' + result[i].id +'">\n' +
   '             <i class="bi bi-pencil" style="color: #000;"></i>\n' +
   '         </a>\n' +
 '       </div>';
@@ -62,22 +79,17 @@ export class CommonPage{
     }
   }
 
-  openCommonDeleteModal(handler){
-    if( handler ){
-      const btn = handler.target;
-      const expenseId = btn.getAttribute('data-item-id');
 
-      console.log(btn);
+  openCommonModal(id){
+    document.getElementById('common-delete').addEventListener('click', (event)=>{
+      this.deleteCommon(id).then()
+    })
+  }
 
-      document.getElementById('delete-btn').addEventListener('click', ()=>{
-        this.deleteCommon(expenseId).then()
-      })
-
+  async deleteCommon(id){
+    const result = await HttpUtils.request('/operations/' + id, 'DELETE')
+    if(!result.error){
+      window.location.reload()
     }
   }
-
-  deleteCommon(period){
-
-  }
-
 }

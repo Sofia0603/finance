@@ -1,31 +1,33 @@
 <div class="content">
       <div class="container-fluid">
-        <form class="common-form col-12 needs-validation" novalidate>
+        <form class="common-form col-12 needs-validation" novalidate id="common-add-form">
 
           <div class="form-group">
-            <input type="text" class="form-control rounded-3 " id="common-name" placeholder="Тип..." required="">
-            <div class="invalid-feedback">Введите название</div>
+            <input type="text" class="form-control rounded-3 " id="common-type" placeholder="Тип..." required="">
+            <div class="invalid-feedback">Введите тип</div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control rounded-3" id="common-category" placeholder="Категория..." required="">
-            <div class="invalid-feedback">Введите название</div>
+            <select name="common-category" id="common-category" class="form-control rounded-3" required="">
+
+            </select>
+            <div class="invalid-feedback">Выберите категорию</div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control rounded-3" id="common-sum" placeholder="Сумма в $..." required="">
-            <div class="invalid-feedback">Введите название</div>
+            <input type="number" class="form-control rounded-3" id="common-amount" placeholder="Сумма в $..." required="">
+            <div class="invalid-feedback">Введите сумму</div>
           </div>
           <div class="form-group">
             <input type="date" class="form-control rounded-3" id="common-date" placeholder="Дата..." required="">
-            <div class="invalid-feedback">Введите название</div>
+            <div class="invalid-feedback">Введите дату</div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control rounded-3" id="common-comment" placeholder="Комментарий..." required="">
-            <div class="invalid-feedback">Введите название</div>
+            <input type="text" class="form-control rounded-3" id="common-comment" placeholder="Комментарий..." >
+            <div class="invalid-feedback">Введите комментарий</div>
           </div>
 
           <div class="mt-3 d-flex gap-3">
             <button type="button" class="btn btn-success" id="common-success">Создать</button>
-            <button type="button" class="btn btn-danger" id="common-cancel">Отмена</button>
+            <a href="/common" type="button" class="btn btn-danger" id="common-cancel">Отмена</a>
           </div>
         </form>
       </div>

@@ -41,9 +41,7 @@ export  class ExpensesAdd{
       if(!result.error){
         this.openNewRoute('/expenses')
       }
-
     }
-
   }
 }
 
