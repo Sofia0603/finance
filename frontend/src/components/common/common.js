@@ -18,9 +18,22 @@ export class CommonPage{
 
         tabs.forEach(item => item.classList.remove("active"));
 
+        let period = tab.dataset.period;
+
+        if(tab.dataset.period === 'interval'){
+
+            let inputFrom = document.getElementById('input-from').value;
+            let inputTo = document.getElementById('input-to').value;
+
+            if(!inputFrom && !inputTo){
+              alert("Заполните поля дат");
+              return
+            }
+
+            period = 'interval&dateFrom='+inputFrom +'&dateTo='+ inputTo +'';
+        }
         tab.classList.add("active");
 
-        let period = tab.dataset.period;
         this.getCommon(period).then()
 
       })

@@ -18,7 +18,6 @@ export class HttpUtils {
 
     if(useAuth) {
       token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
-      console.log('token из http- ' + token);
       if(token){
         params.headers['x-auth-token'] = token
       }

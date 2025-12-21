@@ -1,64 +1,52 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--  <title>Главная</title>-->
-
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">-->
-<!--  <link rel="stylesheet" href="../../../../node_modules/admin-lte/dist/css/adminlte.min.css">-->
-<!--&lt;!&ndash;  <link rel="stylesheet" href="./node_modules/calendar-15/css/rome.css">&ndash;&gt;-->
-
-<!--  <link rel="stylesheet" href="../../../main.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/sidebars.css">-->
-<!--  <link rel="stylesheet" href="../../../styles/dashboard.css">-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<header>-->
-<!--  <div class="header d-flex justify-content-between align-items-center d-md-none">-->
-<!--    <img class="ms-3" src="../../../images/logo.svg" alt="" width="98px" height="40px">-->
-
-<!--    <button id="burger" class="btn btn-primary d-md-none m-2 bg-transparent border-0" type="button">-->
-<!--      <i class="bi bi-list color-dark-blue"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</header>-->
-
-<!--<main class="d-flex flex-nowrap">-->
-
-
-
-
 <div class="dashboard">
   <div class="container-fluid">
 
-    <div class="row align-items-center gap-3 mb-5">
+    <div class="dashboard row align-items-center gap-3 mb-5">
       <div class="col-12 col-md-auto">
         <ul class="nav nav-pills dashboard-tab">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Сегодня</a>
+            <button type="button" class="nav-link" data-period="today">
+              Сегодня
+            </button>
           </li>
-          <li class="nav-item"><a class="nav-link" href="#">Неделя</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Месяц</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Год</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Все</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Интервал</a></li>
+          <li class="nav-item">
+            <button type="button" class="nav-link" data-period="week">
+              Неделя
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link" data-period="month">
+              Месяц
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link" data-period="year">
+              Год
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link active" data-period="all">
+              Все
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link" data-period="interval">
+              Интервал
+            </button>
+          </li>
         </ul>
       </div>
       <div class="col-12 col-md d-flex">
         <form class="d-flex flex-nowrap gap-4">
 
           <div class="d-flex align-items-center gap-2">
-            <label for="input_from" class="mb-0">с</label>
-            <input type="text" id="input_from" class="form-control bg-transparent border-0" style="width:110px" placeholder="Дата">
+            <label for="input-from" class="mb-0">с</label>
+            <input type="date" id="input-from" class="form-control bg-transparent border-0" style="width:130px" placeholder="Дата">
           </div>
 
           <div class="d-flex align-items-center gap-2">
-            <label for="input_to" class="mb-0">по</label>
-            <input type="text" id="input_to" class="form-control bg-transparent border-0" style="width:110px" placeholder="Дата">
+            <label for="input-to" class="mb-0">по</label>
+            <input type="date" id="input-to" class="form-control bg-transparent border-0" style="width:130px" placeholder="Дата">
           </div>
 
 
@@ -92,16 +80,3 @@
   </div>
 </div>
 
-
-<!--  </div>-->
-
-
-<!--</main>-->
-
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/popper.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;<script src="./node_modules/calendar-15/js/rome.js"></script>&ndash;&gt;-->
-
-<!--<script src="../../../script.js"></script>-->
-<!--<script src="../../../scripts/dashboard.js"></script>-->
-<!--</body>-->
-<!--</html>-->

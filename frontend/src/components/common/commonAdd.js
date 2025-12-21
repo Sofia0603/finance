@@ -77,9 +77,8 @@ export class CommonAdd{
 
       if(!result.error){
         this.openNewRoute('/common')
-      } else {
+      } else if(result.error) {
         alert(result.message)
-
       }
     }
   }
