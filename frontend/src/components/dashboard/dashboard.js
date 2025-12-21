@@ -1,20 +1,29 @@
+import {HttpUtils} from "../../utils/http-utils";
+
 export class Dashboard {
-  constructor(){
-    console.log('dashboard');
+  constructor() {
 
 
+      this.getIncome().then()
+  }
 
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+  async getIncome(){
+    const result = HttpUtils.request('/categories/income', 'GET')
+    console.log(result)
 
-    var pieData= {
-      labels: [
-        'Red',
-        'Orange',
-        'Yellow',
-        'Green',
-        'Blue',
-      ],
+    this.showDashboard(result)
+  }
+
+  showDashboard(incomes) {
+    let pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    let pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+
+    let incomeData= {
+      labels: incomes.map((item) => {
+        return {
+          title
+        }
+      }),
       datasets: [
         {
           data: [700,500,400,600,300],
@@ -23,19 +32,20 @@ export class Dashboard {
       ]
     };
 
-    var pieOptions     = {
+
+    let pieOptions     = {
       maintainAspectRatio : false,
       responsive : true,
     }
 
     new Chart(pieChartCanvas, {
       type: 'pie',
-      data: pieData,
+      data: incomeData,
       options: pieOptions
     })
     new Chart(pieChartCanvas2, {
       type: 'pie',
-      data: pieData,
+      data: incomeData,
       options: pieOptions
     })
   }

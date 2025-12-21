@@ -14,6 +14,7 @@ import {CommonEdit} from "./components/common/commonEdit";
 import {AuthUtils} from "./utils/auth-utils";
 import {CheckAccessUtils} from "./utils/check-access-utils";
 import {Logout} from "./components/auth/logout";
+import {HttpUtils} from "./utils/http-utils";
 
 
 export class Router{
@@ -308,6 +309,8 @@ export class Router{
             })
           }
 
+          const result = await HttpUtils.request('/balance', 'GET')
+          document.getElementById('balance').innerText = result.balance;
 
         }
         contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());

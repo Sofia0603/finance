@@ -46,23 +46,14 @@ export class Login{
         password: this.passwordElement.value,
         rememberMe: this.rememberMeElement.checked
       })
-
+    debugger
       console.log(data)
 
-      if (data.error || (!data.tokens.accessToken || !data.tokens.refreshToken || !data.user.id || !data.user.name || !data.user.lastName)) {
+      if (data.error && (!data.tokens.accessToken || !data.tokens.refreshToken || !data.user.id || !data.user.name || !data.user.lastName)) {
         if(data.message ) {
-
-          if(data.message === "Invalid email or password"){
-            this.commonErrorElement.innerText = "Неверный логин или пароль";
-            this.commonErrorElement.style.display = 'block';
-          } else {
             this.commonErrorElement.innerText = data.message;
             this.commonErrorElement.style.display = 'block';
           }
-
-        }
-
-
         return
       }
 
